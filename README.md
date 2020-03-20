@@ -1,2 +1,2 @@
 # OnlineGameNight
-A collection of online [board] games to play with friends
+A collection of online [board] games to play with friends.
