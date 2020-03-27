@@ -22,7 +22,8 @@ createGameBtn.onclick = function(){
       players: players,
       state: 0,
       questions: shuffle(dataWhoIsMost),
-      questionNumber : -1
+      questionNumber : -1,
+      scoreChange:0
     }).then(function() {
       document.location.href = `who_is_most.html?gameID=${gameID}&myName=${startGameForm.name.value}`;
     })
