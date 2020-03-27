@@ -145,8 +145,12 @@ gameRef.onSnapshot(function(doc) {
                 if (questionNumber < questionMax){ //Haven't reach the end yet
     
                     for (const [playerName, playerData] of Object.entries(players)) {
+                        scoreZ = parseInt (playersCopy[playerName].scoreChange);
+                        if (isNaN(scorez)){
+                            scoreZ = 0;
+                        }
                         players[playerName].vote = ""
-                        players[playerName].score += parseInt (playersCopy[playerName].scoreChange)
+                        players[playerName].score += scoreZ
                         players[playerName].votesGot = []
                         players[playerName].scoreChange = 0
                     }
