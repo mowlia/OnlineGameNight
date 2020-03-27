@@ -9,19 +9,22 @@ if (gameName == "who_is_most"){
 
 $('#alert-error').hide();
 
-
 createGameBtn.onclick = function(){
   if (startGameForm.name.value == ""){
     showAlert("Please enter your name!")
   } else {
     $('#alert-error').hide();
     gameID = makeRandomCode(4)
-    playerHost = {name: startGameForm.name.value, score:0,role:'host'}
+    players = new Object();
+    players[startGameForm.name.value] = {score:0,role:'host'}
     db.collection("who is most").doc(gameID).set({
       host: startGameForm.name.value,
-      players: [playerHost]
+      players: players,
+      state: 0,
+      questions: shuffle(dataWhoIsMost),
+      questionNumber : -1
     }).then(function() {
-      document.location.href = `who_is_most.html?gameID=${gameID}`;
+      document.location.href = `who_is_most.html?gameID=${gameID}&myName=${startGameForm.name.value}`;
     })
     .catch(function(error) {
       showAlert(error)

@@ -5,6 +5,7 @@ html, body {
 /* CSS only for examples not required for centering */
 .container {
     height: 100%;
+    padding-top: 20px;
 }
 
 .dialog input{
@@ -18,4 +19,75 @@ html, body {
 
 #current_players_ul{
     list-style-type:none;
+    padding:5px;
+}
+
+.help-btn{
+    border-radius: 10px;
+}
+
+.info-top{
+    font-size: 15px;
+    background-color: lightgrey;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 5px;
+    line-height: 3;
+}
+
+
+.choice{
+    font-size: 20px;
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 5px;
+    line-height: 3;
+}
+.choice.selected{
+    background-color: lightseagreen;
+}
+.choice:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+
+.result{
+    font-size: 20px;
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 5px;
+    width: fit-content;
+    display: inline-block;
+}
+.result.winner{
+    background-color: lightseagreen;
+}
+.result.loser{
+    background-color: lightpink;
+}
+
+#timer{
+    background-color: red;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    color:white;
+    line-height: 80px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.player_you{
+    color: green;
+}
+
+.question{
+    font-size: 20px;
+}
+.question.main{
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 20px;
 }

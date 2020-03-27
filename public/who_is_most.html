@@ -25,14 +25,38 @@
 	</head>
 	<body>		
 		<div class="container">
-			<div class="row h-100">
-				<div class="col-md-9 my-auto">
-					<div class="alert alert-danger" id="alert-error" role="alert">
-						Alert Here!
+			<div class="row">
+				<div class="col-md-9">
+					<!-- Trigger the game guide with a button -->
+					<button type="button" class="help-btn" data-toggle="modal" data-target="#guideModal">?</button>
+					<span id="info-host" class="info-top"></span>
+					<span id="info-question" class="info-top"></span>
+					<span id="info-state" class="info-top"></span>
+					<span id="info-id" class="info-top"></span>
+					<hr>
+					<div class="row">
+						<span class="question">Who is most likely to </span>
+						<span id="question" class="question main"></span>
 					</div>
-					<h4 id="game_code">Game Code: </h4>
+					<div class="row">
+						<div class="col-md-10">
+							<div id="current_choices_div">
+							</div>
+						</div>
+						<div class="col-md-10">
+							<div id="results_div">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="timer" id="timer">
+							</div>
+							<button type="button" class="btn btn-primary" id="host-btn-main">Next</button>
+						</div>
+					</div>
+
+
 				</div>
-				<div class="col-md-3 my-auto">
+				<div class="col-md-3">
 					<h4>Current Players:</h4>
 					<ul id="current_players_ul">
 					</ul>
@@ -40,6 +64,25 @@
 			</div>
 		</div>
 		
+
+		<!-- Guide Modal -->
+<div id="guideModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+  
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		<div class="modal-body">
+		  <p>Game guides:</p>
+		  sth
+		  lorem ipsum
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+  
+	</div>
+  </div>
 
 		<!-- Bootstrap Dependencies -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
