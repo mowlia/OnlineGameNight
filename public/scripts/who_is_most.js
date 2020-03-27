@@ -55,6 +55,8 @@ gameRef.onSnapshot(function(doc) {
 
             if (myRole == "host")
                 hostBtnMain.style.display = "inline"
+            else 
+                hostBtnMain.style.display = "none"
             
             if (currentState == 2){
 
@@ -64,6 +66,7 @@ gameRef.onSnapshot(function(doc) {
                 
                 // Orders the number of votes received for each player
                 for (const [playerName, playerData] of Object.entries(players)) {
+                    console.log(playerData)
                     if (playerData.vote!=""){
                         if (playersCopy[playerData.vote].hasOwnProperty('votesGot'))
                             playersCopy[playerData.vote].votesGot.push(playerName)
@@ -153,7 +156,8 @@ gameRef.onSnapshot(function(doc) {
                         questionNumber: questionNumber+1,
                         state:1,
                         last_state_1: firebase.firestore.FieldValue.serverTimestamp(), 
-                        players:players
+                        players:players,
+                        answers: firebase.firestore.FieldValue.arrayUnion(playersOrdered[0].name)
                     })
                     .then(function() {
                         console.log("Document successfully updated!");
@@ -163,7 +167,7 @@ gameRef.onSnapshot(function(doc) {
                     });
 
                 } else {
-                    //TODO: END!
+                    
                 }
             }
         }

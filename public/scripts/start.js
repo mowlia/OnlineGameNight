@@ -33,10 +33,20 @@ createGameBtn.onclick = function(){
 }
 
 joinGameBtn.onclick = function(){
-  if (startGameForm.name.value == "" || startGameForm.game-code.value == ""){
+  if (startGameForm.name.value == "" || startGameForm.game_code.value == ""){
     showAlert("Please enter your name and game code!")
   } else{
     $('#alert-error').hide();
-
+    gameID = startGameForm.game_code.value
+    player  = {score:0,role:'player'}
+    db.collection("who is most").doc(gameID).update({
+      [`players.${startGameForm.name.value }`] : player,
+      vote: ""
+    }).then(function() {
+      document.location.href = `who_is_most.html?gameID=${gameID}&myName=${startGameForm.name.value}`;
+    })
+    .catch(function(error) {
+      showAlert(error)
+    });
   }
 }
