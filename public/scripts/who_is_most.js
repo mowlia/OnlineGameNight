@@ -17,7 +17,7 @@ player = [];
 questionNumber = 0;
 questionMax = 10;
 last_state_1 = null;
-timerMax = 15;
+timerMax = 60;
 myVote = null;
 players = null;
 
@@ -103,7 +103,6 @@ gameRef.onSnapshot(function(doc) {
                             classExtra = "loser"
                             playerResult.voted.forEach(function(playerVoted){ playersCopy[playerVoted].scoreChange = -1})
                         } else {
-                            playersCopy
                             playerResult.voted.forEach(function(playerVoted){ playersCopy[playerVoted].scoreChange = 0})
                         }
                         resultsDiv.innerHTML += `<div class="result ${classExtra}">
@@ -151,6 +150,7 @@ gameRef.onSnapshot(function(doc) {
                         players[playerName].votesGot = []
                         players[playerName].scoreChange = 0
                     }
+                    playersOrdered = [{name:""}]
                     //state should become 1 and question number+1
                     gameRef.update({
                         questionNumber: questionNumber+1,
@@ -172,6 +172,7 @@ gameRef.onSnapshot(function(doc) {
             }
         }
 
+        playersCopy = players
         playersList = []
         for (const [playerName, playerData] of Object.entries(players)) {
             playersList.push({name:playerName,data:playerData})
@@ -207,7 +208,7 @@ function updateTimeRemaining(){
         var now = new Date();
         difference = (now.getTime() - startTime.getTime())/1000
         timer = Math.trunc(timerMax - difference)
-        if (timer<=0){
+        if (timer<=0 && myRole == "host"){
             gameRef.update({
                 state:2,
             })
