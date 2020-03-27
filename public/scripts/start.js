@@ -23,7 +23,8 @@ createGameBtn.onclick = function(){
       state: 0,
       questions: shuffle(dataWhoIsMost),
       questionNumber : -1,
-      scoreChange:0
+      scoreChange:0,
+      score:0
     }).then(function() {
       document.location.href = `who_is_most.html?gameID=${gameID}&myName=${startGameForm.name.value}`;
     })
@@ -42,7 +43,9 @@ joinGameBtn.onclick = function(){
     player  = {score:0,role:'player'}
     db.collection("who is most").doc(gameID).update({
       [`players.${startGameForm.name.value }`] : player,
-      vote: ""
+      vote: "",
+      scoreChange:0,
+      score:0
     }).then(function() {
       document.location.href = `who_is_most.html?gameID=${gameID}&myName=${startGameForm.name.value}`;
     })
