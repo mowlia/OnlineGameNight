@@ -15,9 +15,9 @@ hostName = "";
 currentState = 0;
 player = [];
 questionNumber = 0;
-questionMax = 10;
+questionMax = 70;
 last_state_1 = null;
-timerMax = 60;
+timerMax = 30;
 myVote = null;
 players = null;
 
@@ -146,7 +146,7 @@ gameRef.onSnapshot(function(doc) {
     
                     for (const [playerName, playerData] of Object.entries(players)) {
                         scoreZ = parseInt (playersCopy[playerName].scoreChange);
-                        if (isNaN(scorez)){
+                        if (isNaN(scoreZ)){
                             scoreZ = 0;
                         }
                         players[playerName].vote = ""
@@ -154,6 +154,8 @@ gameRef.onSnapshot(function(doc) {
                         players[playerName].votesGot = []
                         players[playerName].scoreChange = 0
                     }
+                    
+                    answer = playersOrdered[0].name
                     playersOrdered = [{name:""}]
                     //state should become 1 and question number+1
                     gameRef.update({
@@ -161,7 +163,7 @@ gameRef.onSnapshot(function(doc) {
                         state:1,
                         last_state_1: firebase.firestore.FieldValue.serverTimestamp(), 
                         players:players,
-                        answers: firebase.firestore.FieldValue.arrayUnion(playersOrdered[0].name)
+                        answers: firebase.firestore.FieldValue.arrayUnion(answer)
                     })
                     .then(function() {
                         console.log("Document successfully updated!");
